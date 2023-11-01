@@ -1,0 +1,118 @@
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2", "wheel", "Cython"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project]
+name = "pcpptc"
+version = "1.0.0"
+description = "An optimizer for Partial Coverage Path Planning with Turn Costs."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Development Status :: 3 - Alpha",
+]
+dependencies = [
+"networkx",
+ "numpy",
+ "matplotlib",
+ "gurobipy",
+  "shapely",
+  "pcst_fast",
+    "shapely",
+  #  "python-gmsh",
+    "pygmsh",
+    "descartes",
+    "blossomv@git+https://github.com/amcpherson/blossomv",
+    "sympy",
+    "chardet"
+]
+
+
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = ["-ra", "--showlocals", "--strict-markers", "--strict-config"]
+xfail_strict = true
+filterwarnings = ["error"]
+log_cli_level = "info"
+testpaths = ["tests"]
+
+
+[tool.ruff]
+select = [
+    "E", "F", "W", # flake8
+    "B",  "B904",  # flake8-bugbear
+    "I",           # isort
+    "ARG",         # flake8-unused-arguments
+    "C4",          # flake8-comprehensions
+    "EM",          # flake8-errmsg
+    "ICN",         # flake8-import-conventions
+    "ISC",         # flake8-implicit-str-concat
+    "PGH",         # pygrep-hooks
+    "PIE",         # flake8-pie
+    "PL",          # pylint
+    "PT",          # flake8-pytest-style
+    "PTH",         # flake8-use-pathlib
+    "RET",         # flake8-return
+    "RUF",         # Ruff-specific
+    "SIM",         # flake8-simplify
+    "TID251",      # flake8-tidy-imports.banned-api
+    "T20",         # flake8-print
+    "UP",          # pyupgrade
+    "YTT",         # flake8-2020
+]
+extend-ignore = [
+    "PLR",     # Design rules for pylint
+    "PLE1205", # Format check doesn't work with our custom logger
+    "E501",    # Line too long
+    "PT004",   # Incorrect, just usefixtures instead.
+    "RUF009",  # Too easy to get a false positive
+]
+target-version = "py37"
+src = ["src"]
+unfixable = ["T20", "F841"]
+exclude = []
+
+
+[tool.mypy]
+files = ["src", "tests"]
+mypy_path = ["$MYPY_CONFIG_FILE_DIR/src"]
+python_version = "3.7"
+warn_unused_configs = true
+show_error_codes = true
+enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
+strict = true
+disallow_untyped_defs = false
+
+[[tool.mypy.overrides]]
+module = ["numpy", "pathspec", "setuptools_scm", "hatch_fancy_pypi_readme"]
+ignore_missing_imports = true
+
+
+[tool.pylint]
+py-version = "3.7"
+jobs = "0"
+reports.output-format = "colorized"
+similarities.ignore-imports = "yes"
+good-names = ["f"]
+messages_control.disable = [
+    "design",
+    "fixme",
+    "import-outside-toplevel",
+    "invalid-name",
+    "line-too-long",
+    "missing-class-docstring",
+    "missing-function-docstring",
+    "missing-function-docstring",
+    "missing-module-docstring",
+    "wrong-import-position",
+    "unnecessary-ellipsis",  # Conflicts with Protocols
+    "broad-except",
+    "unused-argument",  # Handled by Ruff
+    "redefined-builtin",  # ExceptionGroup is a builtin
+]
