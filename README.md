@@ -18,22 +18,34 @@
 
 **Full Version:** [https://arxiv.org/abs/2310.20340](https://arxiv.org/abs/2310.20340)
 
-Given a polygon containing the feasible positions of a circular robot and a set
-of weighted polygons for value of the area and a cost multiplier. We compute a
-tour that optimizes covered value minus the cost based on distance and turn
-angles (locally multiplied by the expensive areas).
+![Examples](./.assets/multiple_examples.png)
 
-**Approach:**
+## Algorithm Overview:
 
-1. Generate a grid that fits the polygonal environment. Determine coverage value
-   for grid points and the local touring costs.
-2. Compute a (penalty) cycle cover on the grid
-   1. Solve fractional cycle cover on it. Possibly extended with some additional
-      constraints to make it more integral and more toury.
-   2. Select atomic strips
-   3. Match the atomic strips via a minimum weight perfect matching, creating a
-      cycle cover
-3. Connect to a tour.
+Our adapted algorithm extends the work of Fekete and Krupke to handle polygonal instances with regions of varying costs. Below is a simplified explanation of the algorithm, suited for our GitHub project page.
+
+### Steps of the Generalized Algorithm
+
+1. **Polygon to Graph Transformation**: We start by translating the polygonal instances into a discrete graph composed of waypoints, laying the groundwork for computational handling.
+
+2. **Fractional Solution via Linear Programming**: On this graph, we calculate a fractional solution that guides the subsequent stages, employing linear programming techniques.
+
+3. **Atomic Strip Selection**: Utilizing the fractional solution, we identify atomic strips, which are the building blocks for our solution. This process is more intricate for general meshes compared to uniform square grids.
+
+4. **Cycle Cover Matching**: We then match these atomic strips to form a cycle cover, ensuring all waypoints are included in our preliminary solution.
+
+5. **Cycle Cover Enhancement**: The cycle cover is further refined to improve its quality and efficiency.
+
+6. **Tour Construction**: By connecting the cycles, we construct a single tour that covers all waypoints.
+
+7. **Tour Refinement**: Finally, the tour undergoes further improvements to optimize its performance.
+
+### Adaptations from the Original Algorithm
+
+The key steps where our algorithm diverges from Fekete and Krupke's original are the conversion of polygons to graphs (Step 1), the selection of atomic strips (Step 3), and the improvements made to both the cycle cover and final tour (Steps 5 and 7). These modifications enable our algorithm to effectively handle more complex and irregular environments.
+
+When applied to a regular square grid and with certain optimizations turned off, our algorithm's performance closely aligns with the original. Detailed explanations of the enhanced steps can be found in the subsequent sections of our documentation.
+
 
 <img src="./.assets/example.png" alt="example" width="400">
 
