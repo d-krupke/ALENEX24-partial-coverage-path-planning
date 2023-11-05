@@ -1,4 +1,22 @@
-# Partial Covering Path Planning for polygonal environments with valuable and expensive areas using irregular grids.
+# ALENEX 2024: Near-Optimal Coverage Path Planning with Turn Costs (Code and Data)
+
+*Dominik Krupke, 2023, TU Braunschweig, Germany*
+
+**Abstract:**
+
+>  Coverage path planning is a fundamental challenge in robotics, with diverse applications in aerial surveillance, manufacturing, cleaning, inspection, agriculture, and more.
+>  The main objective is to devise a trajectory for an agent that efficiently covers a given area,
+>  while minimizing time or energy consumption.
+>  Existing practical approaches often lack a solid theoretical foundation, relying on purely heuristic methods,
+>  or overly abstracting the problem to a simple Traveling Salesman Problem in Grid Graphs.
+>  Moreover, the considered cost functions only rarely consider turn cost, prize-collecting variants for uneven cover demand, or arbitrary geometric regions.
+>
+>  In this paper, we describe an array of systematic methods for handling arbitrary meshes derived from intricate, polygonal environments.
+>  This adaptation paves the way to compute efficient coverage paths with a robust theoretical foundation for real-world robotic applications.
+>  Through comprehensive evaluations, we demonstrate that the algorithm also exhibits low optimality gaps, while efficiently handling complex environments. 
+>  Furthermore, we showcase its versatility in handling partial coverage and accommodating heterogeneous passage costs, offering the flexibility to trade off coverage quality and time efficiency.
+
+**Full Version:** [https://arxiv.org/abs/2310.20340](https://arxiv.org/abs/2310.20340)
 
 Given a polygon containing the feasible positions of a circular robot and a set
 of weighted polygons for value of the area and a cost multiplier. We compute a
