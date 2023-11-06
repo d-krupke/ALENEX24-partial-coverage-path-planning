@@ -22,7 +22,7 @@
 
 ## Algorithm Overview:
 
-Our adapted algorithm extends the work of Fekete and Krupke to handle polygonal instances with regions of varying costs. Below is a simplified explanation of the algorithm, suited for our GitHub project page.
+Our adapted algorithm extends the work of Fekete and Krupke to handle polygonal instances with regions of varying costs. Below is a simplified explanation of the algorithm.
 
 ### Steps of the Generalized Algorithm
 
