@@ -125,6 +125,8 @@ may be missing in the repository.
 Most of the corresponding jupyter notebooks that evaluate the experiments
 contain a documentation and explanation.
 
+You can find some of the large data files [here](https://www.dropbox.com/scl/fi/hvxu3umtw0vx2oab8qd3w/BLOBS_ALENEX24_PCPP.tar.xz?rlkey=qepl7hyn48bqj2c0cudc7202b&st=5cxf6n1j&dl=0) as they were to large for the repository.
+
 ## Notes
 
 This project was developed from 2020-2022 as a (pretty large) side project, and
